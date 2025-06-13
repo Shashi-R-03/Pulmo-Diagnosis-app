@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Prediction Result</h1>
+        <p class="text-center">Predicted Class: <strong>{{ predicted_class }}</strong></p>
+        <div class="text-center">
+            <img src="{{ superimposed_image }}" alt="Superimposed Heatmap" class="img-fluid">
+        </div>
+        <div class="text-center mt-4">
+            <a href="/" class="btn btn-secondary">Upload another image</a>
+        </div>
+    </div>
+</body>
+</html>

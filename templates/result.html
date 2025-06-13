@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Prediction Result</h1>
+        <p class="text-center">Predicted Class: <strong>{{ predicted_class }}</strong></p>
+        
+        <h3 class="text-center">Confidence Scores:</h3>
+        <ul class="list-group">
+            {% for index in range(confidence_scores|length) %}
+                <li class="list-group-item">
+                    {{ class_names[index] }}: <strong>{{ (confidence_scores[index] * 100) | round(2) }}%</strong>
+                </li>
+            {% endfor %}
+        </ul>
+
+        <h3 class="text-center mt-4">Original X-ray:</h3>
+        <div class="text-center">
+            <img src="{{ url_for('static', filename='uploads/' + file.filename) }}" alt="Original X-ray" class="img-fluid">
+        </div>
+
+        <h3 class="text-center mt-4">Superimposed Heatmap:</h3>
+        <div class="text-center">
+            <img src="{{ superimposed_image }}" alt="Superimposed Heatmap" class="img-fluid">
+        </div>
+
+        <h3 class="text-center mt-4">LIME Explanation:</h3>
+        <div class="text-center">
+            <h3>LIME Overlay:</h3>
+            <div style="position: relative; display: inline-block;">
+                <img id="lime-image" src="{{ url_for('static', filename='uploads/lime_explanation.png') }}" alt="LIME Explanation" class="img-fluid" style="display: none; max-width: 100%;">
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <button id="generate-lime" class="btn btn-primary">Generate LIME Overlay</button>
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="/" class="btn btn-secondary">Upload another image</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('generate-lime').addEventListener('click', function() {
+            // Make an AJAX call to generate the LIME overlay
+            fetch('/generate_lime', {
+                method: 'POST',
+                body: JSON.stringify({ filename: '{{ file.filename }}' }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Update the LIME image source and display it
+                    document.getElementById('lime-image').src = data.lime_image_path;
+                    document.getElementById('lime-image').style.display = 'block';
+                } else {
+                    alert('Error generating LIME overlay');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

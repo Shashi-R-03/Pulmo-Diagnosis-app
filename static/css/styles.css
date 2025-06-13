@@ -1,0 +1,78 @@
+/* General body styles */
+body {
+    background-color: #f8f9fa; /* Light background color */
+    font-family: Arial, sans-serif; /* Use a clean font */
+}
+
+/* Centered container for content */
+.container {
+    max-width: 800px; /* Limit the width for better readability */
+    margin: auto; /* Center the container */
+    padding: 20px; /* Add padding */
+    background-color: #ffffff; /* White background for content */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Headings */
+h1, h2 {
+    color: #343a40; /* Darker text color */
+    margin-bottom: 20px; /* Space below heading */
+}
+
+/* Form styles */
+.form-group {
+    margin-bottom: 20px; /* Space between form elements */
+}
+
+/* Button styles */
+.btn {
+    width: 100%; /* Full-width buttons */
+    padding: 10px; /* Padding for buttons */
+    font-size: 16px; /* Larger font size */
+    border-radius: 5px; /* Rounded corners for buttons */
+}
+
+/* Image styles */
+.img-fluid {
+    max-width: 70%; /* Set a maximum width to make the image smaller */
+    height: auto; /* Maintain aspect ratio */
+    border: 1px solid #ddd; /* Light border around images */
+    border-radius: 4px; /* Rounded corners for images */
+    margin-top: 20px; /* Space above images */
+}
+
+/* Centered text */
+.text-center {
+    text-align: center; /* Center text */
+}
+
+/* Additional spacing */
+.mt-5 {
+    margin-top: 5rem; /* Larger top margin */
+}
+
+.mt-4 {
+    margin-top: 4rem; /* Medium top margin */
+}
+
+/* Chatbot response area */
+#chat-response {
+    min-height: 100px; /* Minimum height for response area */
+    background-color: #e9ecef; /* Light gray background for response area */
+    border: 1px solid #ced4da; /* Border for response area */
+    border-radius: 4px; /* Rounded corners */
+    padding: 10px; /* Padding inside the response area */
+    margin-top: 20px; /* Space above the response area */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px; /* Less padding on smaller screens */
+    }
+
+    .btn {
+        font-size: 14px; /* Smaller button text on mobile */
+    }
+}
