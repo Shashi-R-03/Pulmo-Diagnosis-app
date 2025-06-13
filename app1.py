@@ -10,7 +10,7 @@ app = Flask(__name__)
 model = load_models()  # Load the model once when the app starts
 
 # Initialize Cohere API
-cohere_api_key = 'DbqJjall1lDsQewj14wfw5uulIM7DYqKF5CsgJDA'  # Replace with your actual API key
+cohere_api_key = 'YOUR_API_KEY'  # Replace with your actual API key
 co = cohere.Client(cohere_api_key)
 
 # Define class names
